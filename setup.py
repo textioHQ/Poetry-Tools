@@ -5,7 +5,7 @@ def readme():
         return f.read()
 
 setup(name='poetrytools',
-      version='0.2',
+      version='0.3',
       description='Analyse rhyme scheme, metre and form of poems',
       long_description=readme(),
       author='L Tennant',
