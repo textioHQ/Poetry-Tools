@@ -54,16 +54,31 @@ class TestPoems(unittest.TestCase):
         self.assertTrue(poetrytools.rhymes(
             'junction', 'function', 2))
 
+    def test_initial_rhyme(self):
+        self.assertTrue(poetrytools.rhymes(
+            'old', 'cold', 1))
+
     def test_vowel_index(self):
-        self.assertEqual(poetrytools.get_vowel_index(
+        self.assertEqual(poetrytools.get_nth_last_vowel(
             poetrytools.get_syllables('border')[0], 2),
-            4
+            -2
+        )
+
+    def test_vowel_index_tricky(self):
+        self.assertEqual(poetrytools.get_nth_last_vowel(
+            poetrytools.get_syllables('ratio')[0], 2),
+            -2
+        )
+
+    def test_vowel_index_nonexistent(self):
+        self.assertIsNone(poetrytools.get_nth_last_vowel(
+            poetrytools.get_syllables('2000')[0], 2)
         )
 
     def test_vowel_index(self):
-        self.assertEqual(poetrytools.get_vowel_index(
+        self.assertEqual(poetrytools.get_nth_last_vowel(
             poetrytools.get_syllables('beautiful')[0], 3),
-            6
+            -6
         )
 
     def test_bad_rhyme_1_syll(self):
